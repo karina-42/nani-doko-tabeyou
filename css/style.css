@@ -1,3 +1,7 @@
-button {
+body {
   background: greenyellow;
+}
+
+.new-div {
+  border: 2px solid red;
 }
