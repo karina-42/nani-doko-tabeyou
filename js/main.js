@@ -1,5 +1,6 @@
 const RESTAURANT_URL = `https://nanitabeyouka.herokuapp.com/api`
 const select = document.querySelector('#selectFoodType')
+const button = document.querySelector('#random-food')
 
 fetch(RESTAURANT_URL)
   .then(res => {
@@ -24,7 +25,6 @@ fetch(RESTAURANT_URL)
     let url = `https://nanitabeyouka.herokuapp.com/api/${event.target.value}`
     getRestaurant(url)
   })
-      let newElement = ''
   const getRestaurant = url => {
     fetch(url)
     .then(res => {
@@ -34,7 +34,7 @@ fetch(RESTAURANT_URL)
       console.log(data);
       document.querySelector('#right').style.display = 'none'
       for (let i = 0; i < data.length; i++) {
-        newElement = document.createElement('div')
+        const newElement = document.createElement('div')
         newElement.setAttribute('class', 'new-div')
         newElement.innerHTML = `<h1>Restaurant name: ${data[i].name}</h1>
         <h2>Restaurant area: ${data[i].area}</h2>`
@@ -42,6 +42,25 @@ fetch(RESTAURANT_URL)
       }
     })
   }
+
+  button.addEventListener('click', randomFood)
+
+   function randomFood() {
+    fetch(RESTAURANT_URL)
+    .then(res => {
+      return res.json()
+    })
+    .then(data => {
+      let foodArray = Object.keys(data)
+      let pickRandomFood = foodArray[Math.floor(Math.random() * foodArray.length)]
+
+      let eat = document.querySelector('.eat')
+      eat.textContent = `Try ${pickRandomFood}!`
+      eat.style.textDecoration = 'underline'
+      eat.style.fontWeight = 700 
+      eat.style.fontSize = '30px'
+    })
+   }
     
 // async function apiRequest() {
   // try{
