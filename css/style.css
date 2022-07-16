@@ -1,7 +1,48 @@
+html {
+  color: rgb(20, 19, 1);
+  font-size: 62.5%;
+  text-align: center;
+}
 body {
-  background: greenyellow;
+  background: rgb(243, 66, 19);
 }
 
-.new-div {
-  border: 2px solid red;
+header {
+  border: 5px solid rgb(216, 241, 160);
+  font-size: 2rem;
 }
+
+/*
+for bigger screens
+#choice {
+  display: flex;
+} */
+
+.title {
+  font-size: 2.8rem;
+}
+
+header, #left, #right, .new-div {
+  background-color: rgba(0, 168, 120);
+}
+
+#left, #right, .new-div {
+  font-size: 2rem;
+  border: 5px solid rgb(216, 241, 160);
+  margin: 3px 0;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#selectFoodType, #random-food{
+  width: 200px;
+  font-size: 2rem;
+  background-color: rgb(241, 200, 177);
+}
+
+/* .new-div { */
+  /* border: 2px solid red; */
+/* } */

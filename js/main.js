@@ -1,6 +1,5 @@
 const RESTAURANT_URL = `https://nanitabeyouka.herokuapp.com/api`
 const select = document.querySelector('#selectFoodType')
-// document.getElementById('selectFoodType').addEventListener('onChange', apiRequest)
 
 fetch(RESTAURANT_URL)
   .then(res => {
@@ -25,7 +24,7 @@ fetch(RESTAURANT_URL)
     let url = `https://nanitabeyouka.herokuapp.com/api/${event.target.value}`
     getRestaurant(url)
   })
-
+      let newElement = ''
   const getRestaurant = url => {
     fetch(url)
     .then(res => {
@@ -33,11 +32,12 @@ fetch(RESTAURANT_URL)
     })
     .then(data => {
       console.log(data);
+      document.querySelector('#right').style.display = 'none'
       for (let i = 0; i < data.length; i++) {
-        const newElement = document.createElement('div')
+        newElement = document.createElement('div')
         newElement.setAttribute('class', 'new-div')
-        newElement.innerHTML = `<h1>${data[i].name}</h1>
-        <h2>${data[i].area}</h2>`
+        newElement.innerHTML = `<h1>Restaurant name: ${data[i].name}</h1>
+        <h2>Restaurant area: ${data[i].area}</h2>`
         document.body.appendChild(newElement)
       }
     })
@@ -65,5 +65,3 @@ fetch(RESTAURANT_URL)
 //     console.log(error);
 //   }
 // }
-
-console.log('hey');
