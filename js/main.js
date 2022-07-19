@@ -7,15 +7,21 @@ fetch(RESTAURANT_URL)
     return res.json()
   })
   .then(data => {
-    // console.log(data.pizza[0].name);
-    // console.log(data);
-    let foodKeyArray = Object.keys(data)
-    // console.log(foodKeyArray);
-
-    for(let i = 0; i < foodKeyArray.length; i++) {
+    //create an array of unique food
+    let foodArray = []
+    let uniqueFoodArray = []
+    
+    for(let i = 0; i < data.length; i++) {
+      foodArray.push(data[i].food)
+      uniqueFoodArray = foodArray.filter((value, index, arr) => {
+        return arr.indexOf(value) === index
+      })
+    }
+    //loop through unique food array to display in drop down menu
+    for(let i = 0; i < uniqueFoodArray.length; i++) {
       const option = document.createElement('option')
-      option.value = foodKeyArray[i]
-      option.innerText = foodKeyArray[i]
+      option.value = uniqueFoodArray[i]
+      option.innerText = uniqueFoodArray[i]
       select.appendChild(option)
     }
   })
@@ -53,8 +59,16 @@ fetch(RESTAURANT_URL)
       return res.json()
     })
     .then(data => {
-      let foodArray = Object.keys(data)
-      let pickRandomFood = foodArray[Math.floor(Math.random() * foodArray.length)]
+      let foodArray = []
+      let uniqueFoodArray = []
+      for(let i = 0; i < data.length; i++) {
+        foodArray.push(data[i].food)
+        uniqueFoodArray = foodArray.filter((value, index, arr) => {
+          return arr.indexOf(value) === index
+        })
+      }
+
+      let pickRandomFood = uniqueFoodArray[Math.floor(Math.random() * uniqueFoodArray.length)]
 
       let eat = document.querySelector('.eat')
       eat.textContent = `Try ${pickRandomFood}!`
