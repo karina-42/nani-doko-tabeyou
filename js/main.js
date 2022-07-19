@@ -33,12 +33,14 @@ fetch(RESTAURANT_URL)
     .then(data => {
       console.log(data);
       document.querySelector('#right').style.display = 'none'
+      let results = document.querySelector('#results')
+      results.innerHTML = ''
       for (let i = 0; i < data.length; i++) {
-        const newElement = document.createElement('div')
+        newElement = document.createElement('div')
         newElement.setAttribute('class', 'new-div')
         newElement.innerHTML = `<h1>Restaurant name: ${data[i].name}</h1>
         <h2>Restaurant area: ${data[i].area}</h2>`
-        document.body.appendChild(newElement)
+        results.appendChild(newElement)
       }
     })
   }
