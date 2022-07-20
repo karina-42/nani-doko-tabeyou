@@ -41,8 +41,8 @@ fetch(RESTAURANT_URL)
       for (let i = 0; i < data.length; i++) {
         newElement = document.createElement('div')
         newElement.setAttribute('class', 'new-div')
-        newElement.innerHTML = `<h1>Restaurant name: ${data[i].name}</h1>
-        <h2>Restaurant area: ${data[i].area}</h2>`
+        newElement.innerHTML = `<h1>レストランの名前： ${data[i].name}</h1>
+        <h2>どこにあるか： ${data[i].area}</h2>`
         results.appendChild(newElement)
         if(window.matchMedia("(min-width: 750px)").matches) {
           console.log('matches');
@@ -76,9 +76,9 @@ fetch(RESTAURANT_URL)
 
       let eat = document.querySelector('.eat')
       if (window.matchMedia("(max-width: 750px)").matches) {
-        eat.innerHTML = `<a href="#left">Try ${pickRandomFood}!</a>`
+        eat.innerHTML = `<a href="#left">${pickRandomFood}をおすすめします！</a>`
       } else {
-        eat.textContent = `Try ${pickRandomFood}!`
+        eat.textContent = `${pickRandomFood}をおすすめします！`
       }
       eat.style.textDecoration = 'underline'
       eat.style.fontWeight = 700 
