@@ -27,7 +27,6 @@ fetch(RESTAURANT_URL)
   })
 
   select.addEventListener('change', event => {
-    console.log(event.target.value);
     let url = `https://nanitabeyouka.herokuapp.com/api/${event.target.value}`
     getRestaurant(url)
   })
@@ -37,8 +36,6 @@ fetch(RESTAURANT_URL)
       return res.json()
     })
     .then(data => {
-      console.log(data);
-      document.querySelector('#right').style.display = 'none'
       let results = document.querySelector('#results')
       results.innerHTML = ''
       for (let i = 0; i < data.length; i++) {
@@ -47,6 +44,13 @@ fetch(RESTAURANT_URL)
         newElement.innerHTML = `<h1>Restaurant name: ${data[i].name}</h1>
         <h2>Restaurant area: ${data[i].area}</h2>`
         results.appendChild(newElement)
+        if(window.matchMedia("(min-width: 750px)").matches) {
+          console.log('matches');
+          document.body.querySelector('#choice').after(results)
+        }  else {
+          console.log('no this matchse');
+          document.body.querySelector('#left').after(results)
+        }
       }
     })
   }

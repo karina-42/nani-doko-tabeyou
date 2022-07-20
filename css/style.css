@@ -12,12 +12,6 @@ header {
   font-size: 2rem;
 }
 
-/*
-for bigger screens
-#choice {
-  display: flex;
-} */
-
 .title {
   font-size: 2.8rem;
 }
@@ -46,3 +40,9 @@ header, #left, #right, .new-div {
 /* .new-div { */
   /* border: 2px solid red; */
 /* } */
+
+@media all and (min-width: 750px) {
+  #choice {
+    display: flex;
+}
+}
