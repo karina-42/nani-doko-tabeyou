@@ -16,6 +16,10 @@ header {
   font-size: 2.8rem;
 }
 
+#choice {
+  border: solid 2px black;
+}
+
 header, #left, #right, .new-div {
   background-color: rgba(0, 168, 120);
 }
@@ -45,4 +49,7 @@ header, #left, #right, .new-div {
   #choice {
     display: flex;
 }
+  #left, #right {
+    width: 100%;
+  }
 }

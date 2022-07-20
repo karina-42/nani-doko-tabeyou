@@ -75,10 +75,14 @@ fetch(RESTAURANT_URL)
       let pickRandomFood = uniqueFoodArray[Math.floor(Math.random() * uniqueFoodArray.length)]
 
       let eat = document.querySelector('.eat')
-      eat.textContent = `Try ${pickRandomFood}!`
+      if (window.matchMedia("(max-width: 750px)").matches) {
+        eat.innerHTML = `<a href="#left">Try ${pickRandomFood}!</a>`
+      } else {
+        eat.textContent = `Try ${pickRandomFood}!`
+      }
       eat.style.textDecoration = 'underline'
       eat.style.fontWeight = 700 
-      eat.style.fontSize = '30px'
+      eat.style.fontSize = '20px'
     })
    }
     
